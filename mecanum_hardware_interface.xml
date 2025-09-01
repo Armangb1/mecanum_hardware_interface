@@ -1,6 +1,6 @@
 <library path="mecanum_udp_hw">
     <class name="mecanum_udp_hw/UdpHardware"
-         type="my_robot_hw::UdpHardware"
+         type="mecanum_udp_hw::UdpHardware"
          base_class_type="hardware_interface::SystemInterface">
         <description>UDP hardware interface for mecanum robot</description>
     </class>
