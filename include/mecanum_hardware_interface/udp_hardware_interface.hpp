@@ -12,7 +12,7 @@
 
 using namespace hardware_interface;
 
-namespace mecanum_udp_hw
+namespace mecanum_hardware_interface
 {
 class UdpHardware : public SystemInterface
 {

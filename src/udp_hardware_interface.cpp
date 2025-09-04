@@ -1,6 +1,6 @@
-#include "udp_hardware_interface/udp_hardware_interface.hpp"
+#include "mecanum_hardware_interface/udp_hardware_interface.hpp"
 
-namespace mecanum_udp_hw
+namespace mecanum_hardware_interface
 {
 
   CallbackReturn UdpHardware::on_init(const hardware_interface::HardwareInfo & info)
@@ -24,7 +24,7 @@ namespace mecanum_udp_hw
     memset(&command_addr_, 0, sizeof(command_addr_));
     command_addr_.sin_family = AF_INET;
     command_addr_.sin_port = htons(8888);
-    inet_pton(AF_INET, "192.168.1.2", &command_addr_.sin_addr);
+    inet_pton(AF_INET, "192.168.1.3", &command_addr_.sin_addr);
 
     state_sock_ = socket(AF_INET, SOCK_DGRAM, 0);
     if (state_sock_ < 0) return CallbackReturn::ERROR;
@@ -57,7 +57,7 @@ namespace mecanum_udp_hw
   {
     std::vector<CommandInterface> command_interfaces;
     for (size_t i = 0; i < hw_commands_.size(); i++) {
-      command_interfaces.emplace_back(info_.joints[i].name, HW_IF_VELOCITY, &hw_commands_[i]);
+      command_interfaces.emplace_back(info_.joints[i].name, "voltage", &hw_commands_[i]);
     }
     return command_interfaces;
   }
@@ -91,6 +91,6 @@ namespace mecanum_udp_hw
     return return_type::OK;
   }
 
-}; // namespace mecanum_udp_hw
+}; // namespace mecanum_hardware_interface
 
-PLUGINLIB_EXPORT_CLASS(mecanum_udp_hw::UdpHardware, hardware_interface::SystemInterface)
+PLUGINLIB_EXPORT_CLASS(mecanum_hardware_interface::UdpHardware, hardware_interface::SystemInterface)
