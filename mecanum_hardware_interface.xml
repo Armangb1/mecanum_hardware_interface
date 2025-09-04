@@ -1,7 +1,14 @@
-<library path="mecanum_udp_hw">
-    <class name="mecanum_udp_hw/UdpHardware"
-         type="mecanum_udp_hw::UdpHardware"
-         base_class_type="hardware_interface::SystemInterface">
+<library path="mecanum_hardware_interface">
+    <class name="mecanum_hardware_interface/UdpHardware"
+           type="mecanum_hardware_interface::UdpHardware"
+           base_class_type="hardware_interface::SystemInterface">
         <description>UDP hardware interface for mecanum robot</description>
     </class>
+    <class name="mecanum_hardware_interface/MicroRosInterface"
+           type="mecanum_hardware_interface::MicroRosInterface"
+           base_class_type="hardware_interface::SystemInterface">
+        <description>Micro-ROS hardware interface for mecanum robot</description>
+    </class>
 </library>
+
+
