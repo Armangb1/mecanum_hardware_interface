@@ -48,7 +48,7 @@ namespace mecanum_hardware_interface
 
   // Create publisher for sending commands to micro-ROS
   command_pub_ = node_->create_publisher<std_msgs::msg::Float32MultiArray>(
-    "voltage_cmds", rclcpp::QoS(10).reliable());
+    "voltage_cmds", rclcpp::SensorDataQoS());
   
   // Create subscriber for receiving state from micro-ROS
   state_sub_ = node_->create_subscription<std_msgs::msg::Float32MultiArray>(
